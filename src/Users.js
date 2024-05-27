@@ -18,7 +18,7 @@ const Users = () => {
     //dependency array [eka athule mokuth naththam componnt eka load weddi wada]
 
     const getUsers = () => {
-        Axios.get('http://localhost:3001/api/users')
+        Axios.get(process.env.REACT_APP_ENDPOINT + '/api/users')
         .then(response =>{
 
         //console.log(response.data.response);
@@ -39,7 +39,7 @@ const Users = () => {
             name: data.name,
         }
 
-        Axios.post('http://localhost:3001/api/createuser',payload)
+        Axios.post(process.env.REACT_APP_ENDPOINT + '/api/createuser',payload)
         .then(response =>{
                 getUsers();
                 setSubmitted(false);
@@ -58,7 +58,7 @@ const Users = () => {
             id: data.id,
             name: data.name,
         }
-        Axios.post('http://localhost:3001/api/updateuser',payload)
+        Axios.post(process.env.REACT_APP_ENDPOINT + '/api/updateuser',payload)
         .then(response =>{
                 getUsers();
                 setSubmitted(false);
@@ -71,7 +71,7 @@ const Users = () => {
     }
     const deleteUser = (data) => {
      
-        Axios.post('http://localhost:3001/api/deleteuser',data)
+        Axios.post(process.env.REACT_APP_ENDPOINT + '/api/deleteuser',data)
         .then(response =>{
                 getUsers();
                 setSubmitted(false);
